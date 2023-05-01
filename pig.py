@@ -176,7 +176,7 @@ def piggame():
                         print("Turn Total:", player1turntotal, "Roll/Hold?(Enter)")
             
                         if player1turntotal + player1score >= 100:
-                            print("New score:", player2score)
+                            print("New score:", player1score+player1turntotal)
                             print("Player 1 score:", player1score)
                             print("Player 2 score:", player2score)
                             player1turn = False
