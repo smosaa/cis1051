@@ -82,6 +82,7 @@ class BanachAnimation(MovingCameraScene):
         self.play(Write(R))
         self.play(ReplacementTransform(circleleft,circleleft2))
         self.play(Write(L))
+        self.wait(3)
         
         
         #saves camera for future reset, zooms on left point circle
@@ -151,6 +152,7 @@ class BanachAnimation(MovingCameraScene):
         newwholetitle2.shift(UP*1.3)
         self.play(FadeIn(newwhole))
         self.play(Write(newwholetitle2))
+        self.wait(3)
         
         #on to the up piece
         
@@ -209,3 +211,4 @@ class BanachAnimation(MovingCameraScene):
         sphere2text.shift(UP*1.3)
         self.play(FadeIn(secondsphere))
         self.play(Write(sphere2text))
+        self.wait(3)
