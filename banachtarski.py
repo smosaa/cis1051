@@ -1,4 +1,3 @@
-from manim import *
 %%manim -qm -v WARNING BanachAnimation
 
 class BanachAnimation(MovingCameraScene):
@@ -70,6 +69,7 @@ class BanachAnimation(MovingCameraScene):
         self.play(circledown.animate.shift(LEFT*4))
         self.play(circleright.animate.shift(LEFT*4))
         self.play(circleleft.animate.shift(LEFT*4))
+        self.wait(3)
         self.play(ReplacementTransform(circlepoles,circlepoles2))
         self.play(Write(P))
         self.play(ReplacementTransform(circlestarting,circlestarting2))
