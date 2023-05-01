@@ -175,11 +175,12 @@ def piggame():
                         print("Roll:", dice)
                         print("Turn Total:", player1turntotal, "Roll/Hold?(Enter)")
             
-                        if player1turntotal + player1score >= 100:
-                            print("New score:", player1score+player1turntotal)
-                            print("Player 1 score:", player1score)
-                            print("Player 2 score:", player2score)
-                            player1turn = False
+                    if player1turntotal + player1score >= 100:
+                        player1score+= player1turntotal
+                        print("New score:", player1score)
+                        print("Player 1 score:", player1score)
+                        print("Player 2 score:", player2score)
+                        player1turn = False
                 else:
                     player1score += player1turntotal
                     player1turn = False
@@ -187,101 +188,109 @@ def piggame():
                     print("Player 1 score:", player1score)
                     print("Player 2 score:", player2score)
                     
+            if player1turntotal < 100:
+                player2turn = True
 
-            player2turn = True
-
-            while player2turn:
+                while player2turn:
             
-                x = random.randint(1,6)
-                if x == 1:
-                    player2turntotal = 0
-                    print("Roll:", x)
-                    print("Turn Total:", player2turntotal)
-                    print("New Score:", player2score)
-                    print("Player 1 score:", player1score)
-                    print("Player 2 score:", player2score)
-                    break
-                else:
-                    print("Roll:", x)
-                    player2turntotal += x
-
-                    if player2score + player2turntotal >= 100:
-                        player2score+= player2turntotal
-                        print("New score:", player2score)
-                        print("Player 1 score:", player1score)
-                        print("Player 2 score:", player2score)
-                        gameisplaying = False
-                        player1turn = False
-                        player2turn = False
-                        break
-                    if player2turntotal >= 20:
-                        player2score += player2turntotal
+                    x = random.randint(1,6)
+                    if x == 1:
+                        player2turntotal = 0
+                        print("Roll:", x)
                         print("Turn Total:", player2turntotal)
                         print("New Score:", player2score)
                         print("Player 1 score:", player1score)
                         print("Player 2 score:", player2score)
                         break
+                    else:
+                        print("Roll:", x)
+                        player2turntotal += x
+
+                        if player2score + player2turntotal >= 100:
+                            player2score+= player2turntotal
+                            print("New score:", player2score)
+                            print("Player 1 score:", player1score)
+                            print("Player 2 score:", player2score)
+                            gameisplaying = False
+                            player1turn = False
+                            player2turn = False
+                            break
+                        if player2turntotal >= 20:
+                            player2score += player2turntotal
+                            print("Turn Total:", player2turntotal)
+                            print("New Score:", player2score)
+                            print("Player 1 score:", player1score)
+                            print("Player 2 score:", player2score)
+                            break
 
         else:
-            player1turn = True
-            player1turntotal = 0
-            print("It is player 1's turn")
-            while player1turn:
-                x = random.randint(1,6)
-                if x == 1:
-                    player1turntotal= 0
-                    print("Roll:", x)
-                    print("Turn Total:", player1turntotal)
-                    print("New Score:", player1score)
-                    print("Player 1 score:", player1score)
-                    print("Player 2 score:", player2score)
-                    break
-                else:
-                    print("Roll:", x)
-                    player1turntotal += x
-                    if player1score + player1turntotal >= 100:
-                        player1score+= player1turntotal
-                        print("New score:", player1score)
-                        print("Player 1 score:", player1score)
-                        print("Player 2 score:", player2score)
-                        gameisplaying = False
-                        player1turn = False
-                        player2turn = False
-                        break
-                    if player1turntotal >=  20:
-                        player1score += player1turntotal
+            while player1score < 100 and player2score < 100:
+                
+                player1turn = True
+                player1turntotal = 0
+                print("It is player 1's turn")
+                while player1turn:
+                    x = random.randint(1,6)
+                    if x == 1:
+                        player1turntotal= 0
+                        print("Roll:", x)
                         print("Turn Total:", player1turntotal)
                         print("New Score:", player1score)
                         print("Player 1 score:", player1score)
                         print("Player 2 score:", player2score)
                         break
-            player2turn = True
-            player2turntotal = 0
-            print("It is player 2's turn")
-            while player2turn:
-                userinput = input("Roll/Hold? (Enter)")
-                if not userinput:
-                    dice = random.randint(1,6)
-                    if dice == 1:
-                        player2turntotal = 0
-                        print("Roll:", dice)
-                        print("Turn Total:", player2turntotal)
-                        print("New Score:", player2score)
-                        print("Player 1 score:", player1score)
-                        print("Player 2 score:", player2score)
-                        player2turntotal = 0
-                        player2turn = False
                     else:
-                        player2turntotal += dice
-                        print("Roll:", dice)
-                        if player2turntotal + player2score >= 100:
+                        print("Roll:", x)
+                        player1turntotal += x
+                        if player1score + player1turntotal >= 100:
+                            player1score+= player1turntotal
+                            print("New score:", player1score)
+                            print("Player 1 score:", player1score)
+                            print("Player 2 score:", player2score)
+                            gameisplaying = False
+                            player1turn = False
+                            player2turn = False
+                            break
+                        if player1turntotal >=  20:
+                            player1score += player1turntotal
+                            print("Turn Total:", player1turntotal)
+                            print("New Score:", player1score)
+                            print("Player 1 score:", player1score)
+                            print("Player 2 score:", player2score)
+                            break
+                if player1score < 100:
+                    player2turn = True
+                    player2turntotal = 0
+            
+                    while player2turn:
+                        print("It is player 2's turn")
+                        userinput = input("Roll/Hold? (Enter)")
+                        if not userinput:
+                            dice = random.randint(1,6)
+                            if dice == 1:
+                                player2turntotal = 0
+                                print("Roll:", dice)
+                                print("Turn Total:", player2turntotal)
+                                print("New Score:", player2score)
+                                print("Player 1 score:", player1score)
+                                print("Player 2 score:", player2score)
+                                player2turntotal = 0
+                                player2turn = False
+                            else:
+                                player2turntotal += dice
+                                print("Roll:", dice)
+                                print("Turn Total:", player2turntotal)
+                                if player2turntotal + player2score >= 100:
+                                    player2score+=player2turntotal
+                                    print("New score:", player2score)
+                                    print("Player 1 score:", player1score)
+                                    print("Player 2 score:", player2score)
+                                    player2turn = False
+                        else:
+                            player2score += player2turntotal
+                            player2turn = False
                             print("New score:", player2score)
                             print("Player 1 score:", player1score)
                             print("Player 2 score:", player2score)
-                            player2turn = False
-                else:
-                    player2score += player2turntotal
-                    player2turn = False
-                    print("New score:", player2score)
-                    print("Player 1 score:", player1score)
-                    print("Player 2 score:", player2score)
+          
+
