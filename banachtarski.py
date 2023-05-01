@@ -117,6 +117,7 @@ class BanachAnimation(MovingCameraScene):
         luds.shift(DOWN*.3)
         self.play(FadeOut(lud))
         self.play(Write(luds))
+        self.wait(3)
         
         # zoom out
         
@@ -211,4 +212,4 @@ class BanachAnimation(MovingCameraScene):
         sphere2text.shift(UP*1.3)
         self.play(FadeIn(secondsphere))
         self.play(Write(sphere2text))
-        self.wait(3)
+        self.wait(4)
